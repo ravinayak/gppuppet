@@ -4,10 +4,10 @@ Puppet::Functions.create_function(:'gppuppet::parseenv') do
   end
   def parseenv(hostname) do
     env = hostname? {
-      /[^\-]+-p-\d+/ => 'Production',
-      /[^\-]+-d-\d+/ => 'Development',
-      /[^\-]+-t-\d+/ => 'Test'.
-      default => 'Unknown Environment',
+      # /[^\-]+-p-\d+/ => 'Production',
+      # /[^\-]+-d-\d+/ => 'Development',
+      # /[^\-]+-t-\d+/ => 'Test'.
+      # default => 'Unknown Environment',
     }
     "My environment is :: #{env}"
   end
