@@ -1,3 +1,3 @@
-class gpuppet::functions{
+class gppuppet::functions{
   
 }
