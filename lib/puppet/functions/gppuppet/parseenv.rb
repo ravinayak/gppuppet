@@ -1,5 +1,5 @@
 Puppet::Functions.create_function(:'gppuppet::parseenv') do
-  dispath :parseenv do
+  dispatch :parseenv do
     param 'String', :hostname
   end
   def parseenv(hostname) do
