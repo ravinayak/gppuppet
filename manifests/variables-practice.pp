@@ -1,20 +1,5 @@
 include stdlib
-$user='rahul'
-$firstname='Rahul'
-$lastname='Dichosta'
-$comment="${firstname} ${lastname}"
-$y=12
-$z=1.9
-$a='Ravi'
-$b=1.25
-notice("Here are the values interpolated: ${y} - ${z} - ${a} - ${b}")
-user{$user:
-  ensure  => absent,
-  comment => $comment,
-}
-file{'/etc/ntp.conf':
-  ensure => absent,
-}
+
 #$var=123
 #$var='123'
 # notice("Data Type :: ${Type[$comment]}")
