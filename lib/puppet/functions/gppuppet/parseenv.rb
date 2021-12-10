@@ -11,7 +11,7 @@ Puppet::Functions.create_function(:'gppuppet::parseenv') do
     when /[^\-]+-t-\d+/
       'Test'
     else
-      'Unknown Environment',
+      'Unknown Environment'
     end
     "My environment is :: #{env}"
   end
