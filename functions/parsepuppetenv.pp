@@ -1,8 +1,8 @@
 function gppuppet::parsepuppetenv(String $hostname) >> String{
   $env = hostname ? {
-      /[^\-]+-p-\d+/ => 'Production',
-      /[^\-]+-d-\d+/ => 'Development',
-      /[^\-]+-t-\d+/ => 'Test',
+      /[^\-]+-p-[^\-]+/ => 'Production',
+      /[^\-]+-d-[^\-]+/ => 'Development',
+      /[^\-]+-t-[^\-]+/ => 'Test',
       default => 'Unknown Environment',
     }
   "My environment - Puppet function :: ${env}"
