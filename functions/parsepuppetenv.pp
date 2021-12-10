@@ -1,5 +1,5 @@
 function gppuppet::parsepuppetenv(String $hostname) >> String{
-  $env = $hostname ? {
+  $env = 'oradb-p-001222' ? {
       /[^\-]+-p-[^\-]+/ => 'Production',
       /[^\-]+-d-[^\-]+/ => 'Development',
       /[^\-]+-t-[^\-]+/ => 'Test',
