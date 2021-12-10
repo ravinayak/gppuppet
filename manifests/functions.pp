@@ -16,4 +16,9 @@ class gppuppet::functions{
   $puppet_greeting = gppuppet::sayname('Mr Neo')
   notice($greeting)
   notice($puppet_greeting)
+
+  $env = gppuppet::parseenv('oradb-p-001234')
+  $puppet_env = gppuppet::parseenvironment('oradb-d-001')
+  notice($env)
+  notice($puppet_env)
 }
