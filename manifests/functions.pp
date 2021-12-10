@@ -5,7 +5,7 @@ class gppuppet::functions{
     'tom'   => 'tom',
     'jerry' => 'jerry',
   }
-  $element_arr.each |String $element| {
+  $elements_arr.each |String $element| {
     notice($element)
   }
   $elements_hash.each |String $key, String $value| {
