@@ -1,4 +1,4 @@
 class gppuppet{
-  include gppuppet::variables
+  include gppuppet::variables-practice
   include gppuppet::functions
 }
