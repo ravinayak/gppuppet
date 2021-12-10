@@ -5,10 +5,10 @@ class gppuppet::functions{
     'tom'   => 'tom',
     'jerry' => 'jerry',
   }
-  $::element_arr.each |$element| {
+  $::element_arr.each |String $element| {
     notice($element)
   }
-  $::elements_hash.each |$key, $value| {
+  $::elements_hash.each |String $key, String $value| {
     notice("Key and Value :: ${key} -- ${elements_hash[$key]}")
   }
   $hash_prep = $::element_arr.reduce({}) |$res,$val| { $res.merge('name' => $val)}
