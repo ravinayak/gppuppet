@@ -1,5 +1,5 @@
 function gppuppet::parsepuppetenv(String $hostname) >> String{
-  $env = hostname ? {
+  $env = $hostname ? {
       /[^\-]+-p-[^\-]+/ => 'Production',
       /[^\-]+-d-[^\-]+/ => 'Development',
       /[^\-]+-t-[^\-]+/ => 'Test',
