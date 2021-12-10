@@ -26,6 +26,22 @@ class gppuppet::variables(
   Data $data,
   Collection $collection,
 ){
+  $user='rahul'
+  $firstname='Rahul'
+  $lastname='Dichosta'
+  $comment="${firstname} ${lastname}"
+  $y=12
+  $z=1.9
+  $a='Ravi'
+  $b=1.25
+  notice("Here are the values interpolated: ${y} - ${z} - ${a} - ${b}")
+  user{$user:
+    ensure  => absent,
+    comment => $comment,
+  }
+  file{'/etc/ntp.conf':
+    ensure => absent,
+  }
   notice("The variables are interpolated as: ${str} -- ${int} -- ${float} -- ${numeric} -- ${bool} -- ${arr} -- ${enum} -- ${hash} -- ${regexp}")
   notice("The variables are interpolated as: ${und} -- ${type1_type} -- ${type2_integer} -- ${type3_string_1_100} -- ${type4_resource}")
   notice("The variables are interpolated as: ${type5_user} -- ${type6_integer_1_10} -- ${arr_str} -- ${hash_str_key_val_int}")
