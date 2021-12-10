@@ -3,7 +3,7 @@ Puppet::Functions.create_function(:'gppuppet::parseenv') do
     param 'String', :hostname
   end
   def parseenv(hostname)
-    case hostname
+    env = case hostname
     when /[^\-]+-p-\d+/
       'Production'
     when /[^\-]+-d-\d+/
