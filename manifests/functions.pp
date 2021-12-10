@@ -1,0 +1,3 @@
+class gpuppet::functions{
+  
+}
