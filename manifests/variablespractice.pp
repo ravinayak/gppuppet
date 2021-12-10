@@ -1,4 +1,4 @@
-class gppuppet::variables-practice{
+class gppuppet::variablespractice{
   include stdlib
   #$var=123
   #$var='123'
