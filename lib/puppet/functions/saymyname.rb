@@ -1,4 +1,4 @@
-Puppet::functions.create_function(':gppuppet::myname') do
+Puppet::functions.create_function(':gppuppet::saymyname') do
   dispatch :saymyname do
     param 'String', :myname
   end
