@@ -3,12 +3,16 @@ Puppet::Functions.create_function(:'gppuppet::parseenv') do
     param 'String', :hostname
   end
   def parseenv(hostname)
-    env = hostname? {
-      # /[^\-]+-p-\d+/ => 'Production',
-      # /[^\-]+-d-\d+/ => 'Development',
-      # /[^\-]+-t-\d+/ => 'Test'.
-      # default => 'Unknown Environment',
-    }
+    case hostname
+    when /[^\-]+-p-\d+/
+      'Production'
+    when /[^\-]+-d-\d+/
+      'Development'
+    when /[^\-]+-t-\d+/
+      'Test'
+    else
+      'Unknown Environment',
+    end
     "My environment is :: #{env}"
   end
 end
