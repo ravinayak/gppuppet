@@ -18,7 +18,7 @@ class gppuppet::functions{
   notice($puppet_greeting)
 
   $env = gppuppet::parseenv('oradb-p-001234')
-  $puppet_env = gppuppet::parseenvironment('oradb-d-001')
+  $puppet_env = gppuppet::parsepuppetenv('oradb-d-001')
   notice($env)
   notice($puppet_env)
 }

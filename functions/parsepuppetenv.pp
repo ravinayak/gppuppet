@@ -1,4 +1,4 @@
-function parseenvironment(String $hostname) >> String{
+function parsepuppetenv(String $hostname) >> String{
   $env = hostname? {
       /[^\-]+-p-\d+/ => 'Production',
       /[^\-]+-d-\d+/ => 'Development',
