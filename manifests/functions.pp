@@ -12,8 +12,4 @@ class gppuppet::functions{
     notice("Key and Value :: ${key} -- ${elements_hash[$key]}")
   }
   $hash_prep = $elements_arr.reduce({}) |$res,$element| { $res.merge('name' => $element)}
-  $greeting = saymyname('Mr Anderson')
-  $puppet_greeting = sayname('Mr Neo')
-  notice($greeting)
-  notice($puppet_greeting)
 }
