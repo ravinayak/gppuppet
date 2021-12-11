@@ -12,6 +12,14 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     gid    => $gid,
     system => false,
   }
+  group { $groups[0]:
+    ensure => present,
+    gid    => 5002,
+  }
+  group { $groups[1]:
+    ensure => present,
+    gid    => 5003,
+  }
   user { $username:
     ensure     => present,
     managehome => false,
@@ -21,14 +29,6 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     groups     => $groups,
     allowdupe  => false,
     shell      => '/bin/bash',
-  }
-  group { $groups[0]:
-    ensure => present,
-    gid    => 5002,
-  }
-  group { $groups[1]:
-    ensure => present,
-    gid    => 5003,
   }
   file {"/home/${username}":
     ensure => directory,
@@ -49,4 +49,5 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     type   => $key_type,
     key    => $key,
   }
+  Group["${groups}"] -> User[$username] -> File -> Ssh_authorized_key
 }
