@@ -26,7 +26,7 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     managehome => false,
     system     => false,
     uid        => $uid,
-    gid        => 5001,
+    gid        => $gid,
     groups     => $groups,
     allowdupe  => false,
     shell      => '/bin/bash',
