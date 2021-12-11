@@ -1,15 +1,22 @@
 define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
   String $username,
+  String $uid,
+  String $gid,
   String $fileforuserinhomedir,
   String $key_type,
   String $key,
 ){
-  $groups = ['newgroup', 'definedtypegroup']
+  $groups = ['newgroup', 'definedtypegroup', $username]
+  group { $username:
+    ensure => present,
+    gid    => $gid,
+    system => false,
+  }
   user { $username:
     ensure     => present,
     managehome => false,
     system     => false,
-    uid        => 10002,
+    uid        => $uid,
     gid        => 5001,
     groups     => $groups,
     allowdupe  => false,
