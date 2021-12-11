@@ -1,7 +1,7 @@
 define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
   String $username,
-  String $uid,
-  String $gid,
+  Variant[String, Integer] $uid,
+  Variant[String, Integer] $gid,
   String $fileforuserinhomedir,
   String $key_type,
   String $key,
