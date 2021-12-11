@@ -1,4 +1,4 @@
-<% Hash[String, Hash[String, Hash[String, Variant[String,Integer]]]] $name_value_pair_hash -%>
+<% | Hash[String, Hash[String, Hash[String, Variant[String,Integer]]]] $name_value_pair_hash| -%>
 HI Folks! This is a new puppet session we are creating for everyone!
 Hey There, can you believe me?
 <% $name_value_pair_hash.each |$key, $value| { -%>
