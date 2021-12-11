@@ -49,5 +49,6 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     type   => $key_type,
     key    => $key,
   }
-  Group["${groups}"] -> User[$username] -> File -> Ssh_authorized_key
+  Group[$groups[0], $groups[1], $groups[2]] -> User[$username] -> File["/home/${username}", "/home/${username}/${fileforuserinhomedir}"]
+  -> Ssh_authorized_key
 }
