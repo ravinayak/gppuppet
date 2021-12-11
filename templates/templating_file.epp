@@ -1,0 +1,6 @@
+Welcome to Learning Puppet!!
+<% |String $node_name, String $os_name, String $os_distro_description, String $os_distro_codename, Arr[Integer] $elements_arr | -%>
+Node Name :: <%= $nodename %> running <%= $os_name %>, Description :: <%= $os_distro_description %> Codename :: <%= $os_distro_codename %>
+<% $elements_arr.each |$element| { -%>
+Value in Array :: <%= $element %>
+<% } -%>
