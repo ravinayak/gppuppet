@@ -3,9 +3,6 @@ class gppuppet::conditionals(
   String $bool_str='',
   String $case_var = 'qa'
 ){
-    $host = 'oadb-p-00012'
-    $bool_str = undef
-    $case_var = 'qa'
     if $host =~ /[^\-]+-p-\d+/ {
       notice('The regex is a match')
       $param1 = 'king'
