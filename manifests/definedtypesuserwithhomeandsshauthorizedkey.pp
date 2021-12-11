@@ -1,6 +1,7 @@
 define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
   String $username,
   String $fileforuserinhomedir,
+  String $key_type,
   String $key,
 ){
   $groups = ['newgroup', 'definedtypegroup']
@@ -38,7 +39,7 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
   ssh_authorized_key { "${username}@localhost":
     ensure => present,
     user   => $username,
-    type   => key,
+    type   => $key_type,
     key    => $key,
   }
 }
