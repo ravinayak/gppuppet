@@ -28,6 +28,13 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     group  => $username,
     mode   => '0755'
   }
+  file {"/home/${username}/${fileforuserinhomedir}.txt":
+    ensure => file,
+    owner  => $username,
+    group  => $username,
+    mode   => '0644',
+    source => 'puppet:///modules/gppuppet/samplefile.txt'
+  }
   ssh_authorized_key { "${username}@localhost":
     ensure => present,
     user   => $username,
