@@ -1,0 +1,10 @@
+<% Hash[String,Integer] $entry_1, Hash[String, Integer] $entry_2, Hash[String, Integer] $entry_3 -%>
+HI Folks! This is a new puppet session we are creating for everyone!
+Hey There, can you believe me?
+<% $entry_1.each |$key, $value| -%>
+Entry 1 :: key - <%= $key %>; Value - <%= $value -%> 
+<% $entry_2.each |$key, $value| -%>
+Entry 2:: key - <%= $key %>; Value - <%= $value -%>
+<% $entry_3.each |$key, $value| -%>
+Entry 3:: key - <%= $key %>; Value - <%= $value %>
+Do you get it now folks ???
