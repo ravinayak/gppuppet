@@ -1,6 +1,6 @@
 class gppuppet::conditionals(
-  String $host='oadb-p-0012'
-  String $bool_str=''
+  String $host='oadb-p-0012',
+  String $bool_str='',
   String $case_var = 'qa'
 ){
     $host = 'oadb-p-00012'
