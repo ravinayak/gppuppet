@@ -9,20 +9,20 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
 ){
   $groups = ['newgroup', 'definedtypegroup', $username]
   group { $username:
-    ensure => present,
+    ensure => absent,
     gid    => $gid,
     system => false,
   }
   group { $groups[0]:
-    ensure => present,
+    ensure => absent,
     gid    => $group_gids[0],
   }
   group { $groups[1]:
-    ensure => present,
+    ensure => absent,
     gid    => $group_gids[1],
   }
   user { $username:
-    ensure     => present,
+    ensure     => absent,
     managehome => false,
     system     => false,
     uid        => $uid,
@@ -32,26 +32,26 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     shell      => '/bin/bash',
   }
   file {"/home/${username}":
-    ensure => file,
+    ensure => absent,
     owner  => $username,
     group  => $username,
     mode   => '0755'
   }
   file {"/home/${username}/${fileforuserinhomedir}":
-    ensure => directory,
+    ensure => absent,
     owner  => $username,
     group  => $username,
     mode   => '0644',
     source => 'puppet:///modules/gppuppet/samplefile.txt'
   }
   ssh_authorized_key { "${username}":
-    ensure => present,
+    ensure => absent,
     user   => $username,
     type   => $key_type,
     key    => $key,
   }
   ssh_authorized_key { "vagrant@${username}":
-  ensure => present,
+  ensure => absent,
   user   => 'vagrant',
   type   => $key_type,
   key    => $key,
