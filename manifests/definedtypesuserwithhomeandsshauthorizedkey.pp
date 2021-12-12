@@ -9,20 +9,20 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
 ){
   $groups = ['newgroup', 'definedtypegroup', $username]
   group { $username:
-    ensure => present,
+    ensure => absent,
     gid    => $gid,
     system => false,
   }
   group { $groups[0]:
-    ensure => present,
+    ensure => absent,
     gid    => $group_gids[0],
   }
   group { $groups[1]:
-    ensure => present,
+    ensure => absent,
     gid    => $group_gids[1],
   }
   user { $username:
-    ensure     => present,
+    ensure     => absent,
     managehome => false,
     system     => false,
     uid        => $uid,
@@ -45,13 +45,13 @@ define gppuppet::definedtypesuserwithhomeandsshauthorizedkey(
     source => 'puppet:///modules/gppuppet/samplefile.txt'
   }
   ssh_authorized_key { "${username}":
-    ensure => present,
+    ensure => absent,
     user   => $username,
     type   => $key_type,
     key    => $key,
   }
-  Group[$groups[0], $groups[1], $groups[2]] -> User[$username] -> File["/home/${username}", "/home/${username}/${fileforuserinhomedir}"]
-  -> Ssh_authorized_key["${username}"]
-  # Group[$groups[0], $groups[1]] -> User[$username] -> Group[$groups[2]] -> File["/home/${username}", "/home/${username}/${fileforuserinhomedir}"]
+  # Group[$groups[0], $groups[1], $groups[2]] -> User[$username] -> File["/home/${username}", "/home/${username}/${fileforuserinhomedir}"]
   # -> Ssh_authorized_key["${username}"]
+  Group[$groups[0], $groups[1]] -> User[$username] -> Group[$groups[2]] -> File["/home/${username}", "/home/${username}/${fileforuserinhomedir}"]
+  -> Ssh_authorized_key["${username}"]
 }
