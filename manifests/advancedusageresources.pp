@@ -14,6 +14,7 @@ class gppuppet::advancedusageresources(
     source => 'puppet:///modules/gppuppet/samplefile.txt',
     mode   => '0644',
   }
+  include gppuppet::sampleclasswithfileresources
   file {
     '/etc/file1.txt':
       show_diff => true;
