@@ -7,6 +7,7 @@ class gppuppet::advancedusageresources(
   # also defaulted to have same values as declared within the file
   # A better way is to use *defaults* within the resource. This however causes difficulty in readability of code. Best Practices book 
   # has some recommendations for this usage
+  include gppuppet::sampleclasswithfileresources
   File {
     ensure => file,
     owner  => 'root',
@@ -14,7 +15,6 @@ class gppuppet::advancedusageresources(
     source => 'puppet:///modules/gppuppet/samplefile.txt',
     mode   => '0644',
   }
-  include gppuppet::sampleclasswithfileresources
   file {
     '/etc/file1.txt':
       show_diff => true;
