@@ -7,25 +7,25 @@ class gppuppet::advancedusageresources(
   # also defaulted to have same values as declared within the file
   # A better way is to use *defaults* within the resource. This however causes difficulty in readability of code. Best Practices book 
   # has some recommendations for this usage
-  File {
-    ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    source => 'puppet:///modules/gppuppet/samplefile.txt',
-    mode   => '0777',
-  }
-  include gppuppet::sampleclasswithfileresources
+  # File {
+  #   ensure => file,
+  #   owner  => 'root',
+  #   group  => 'root',
+  #   source => 'puppet:///modules/gppuppet/samplefile.txt',
+  #   mode   => '0777',
+  # }
+  # include gppuppet::sampleclasswithfileresources
 
-  file {
-    '/etc/file1.txt':
-      mode      => '0644',
-      show_diff => true;
-    '/etc/file2.txt':
-      mode      => '0644',
-      show_diff => true;
-    '/etc/file3.txt':
-      show_diff => true;
-  }
+  # file {
+  #   '/etc/file1.txt':
+  #     mode      => '0644',
+  #     show_diff => true;
+  #   '/etc/file2.txt':
+  #     mode      => '0644',
+  #     show_diff => true;
+  #   '/etc/file3.txt':
+  #     show_diff => true;
+  # }
   # file {
   #   default:
   #     ensure => file,
@@ -40,15 +40,15 @@ class gppuppet::advancedusageresources(
   #     '/etc/file3.txt':
   #       show_diff => true;
   # }
-  # $attrs = {
-  #   ensure => file,
-  #   owner  => 'root',
-  #   group  => 'root',
-  #   mode   => '0644',
-  #   source => 'puppet:///modules/gppuppet/samplefile.txt',
-  # }
-  # file{
-  #   '/etc/file4.txt':
-  #     * => $attrs,
-  # }
+  $attrs = {
+    ensure => file,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    source => 'puppet:///modules/gppuppet/samplefile.txt',
+  }
+  file{
+    '/etc/file4.txt':
+      * => $attrs,
+  }
 }
