@@ -45,7 +45,7 @@ class gppuppet::advancedusageresources(
     source => 'puppet:///modules/gppuppet/samplefile.txt',
   }
   file{
-    '/etc/file3.txt':
+    '/etc/file4.txt':
       * => $attrs,
   }
 }
