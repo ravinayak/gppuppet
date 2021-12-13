@@ -23,18 +23,29 @@ class gppuppet::advancedusageresources(
   #   '/etc/file3.txt':
   #     show_diff => true;
   # }
-  file {
-    default:
-      ensure => file,
-      owner  => 'root',
-      group  => 'root',
-      source => 'puppet:///modules/gppuppet/samplefile.txt',
-      mode   => '0644';
-      '/etc/file1.txt':
-        show_diff => true;
-      '/etc/file2.txt':
-        show_diff => true;
-      '/etc/file3.txt':
-        show_diff => true;
+  # file {
+  #   default:
+  #     ensure => file,
+  #     owner  => 'root',
+  #     group  => 'root',
+  #     source => 'puppet:///modules/gppuppet/samplefile.txt',
+  #     mode   => '0644';
+  #     '/etc/file1.txt':
+  #       show_diff => true;
+  #     '/etc/file2.txt':
+  #       show_diff => true;
+  #     '/etc/file3.txt':
+  #       show_diff => true;
+  # }
+  $attrs = {
+    ensure => file,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    source => 'puppet:///modules/gppuppet/samplefile.txt',
+  }
+  file{
+    '/etc/file3.txt':
+      * => $attrs,
   }
 }
