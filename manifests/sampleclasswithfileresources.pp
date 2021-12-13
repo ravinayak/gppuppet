@@ -3,12 +3,11 @@ class gppuppet::sampleclasswithfileresources{
     ensure => file,
     owner  => 'neo1',
     group  => 'neo1',
-    mode   => '0777',
   }
   file {'/etc/samplefiletest2.txt':
     ensure => file,
     owner  => 'vagrant',
     group  => 'vagrant',
-    mode   => '0755',
+    mode   => '0700'
   }
 }
