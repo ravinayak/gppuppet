@@ -14,7 +14,7 @@ class gppuppet::advancedusageresources(
   #   source => 'puppet:///modules/gppuppet/samplefile.txt',
   #   mode   => '0777',
   # }
-  # include gppuppet::sampleclasswithfileresources
+  # include gppuppet::sampleclasswithfileresourcespredefaults
 
   # file {
   #   '/etc/file1.txt':
