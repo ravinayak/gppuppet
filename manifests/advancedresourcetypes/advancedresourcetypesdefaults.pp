@@ -1,5 +1,5 @@
 class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
-  define defaultsdeclarations{
+  define defaultsdefinedtypewithinclass{
     file{'/etc/advancedresourcetypes-file1.txt':
       ensure => file,
     }
