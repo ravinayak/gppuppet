@@ -7,8 +7,8 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
   default:
     tag => 'defaulttag';
-  '/etc/default1': ;
-  '/etc/default2': ;
+  'default1': ;
+  'default2': ;
 }
   user { 'neo1':
     ensure => present,
