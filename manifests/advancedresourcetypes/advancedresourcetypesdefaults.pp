@@ -1,9 +1,15 @@
 class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
-  define defaultsdefinedtypewithinclass{
+  define defaultsdefinedtypewithinclass {
     file{'/etc/advancedresourcetypes-file1.txt':
       ensure => file,
     }
   }
+  gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
+  default:
+    tag: 'defaulttag',
+  '/etc/default1';
+  '/etc/default2';
+}
   user { 'neo1':
     ensure => present,
   }

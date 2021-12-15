@@ -1,4 +1,4 @@
-class gppuppet::sampleclasswithfileresources{
+class gppuppet::sampleclasswithfileresourcespostdefaults{
   include stdlib
   file {"/etc/samplefilepredefault${fqdn_rand(15, 'sampling')}.txt":
     ensure => file,
