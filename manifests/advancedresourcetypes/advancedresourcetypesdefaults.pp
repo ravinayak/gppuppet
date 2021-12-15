@@ -26,7 +26,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     content => 'This is a file generated through default values allocation',
   }
 
-  include gppuppet::samplefilewithfileresourcespostdefaults
+  include gppuppet::sampleclasswithfileresourcespostdefaults
 
   file{'/etc/defaulttestpostdefault.txt':
     ensure => file,
