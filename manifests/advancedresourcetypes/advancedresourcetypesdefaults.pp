@@ -12,15 +12,21 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # NOTE-3: Resources which are declared using include into a file which contains Resource References can get affected, hence avoid using it
   # NOTE-4: Always scope defaults to the resource definition
   # NOTE-5: Default allocation of attributes can be overriden by explicit declaration of same attributes
+  # NOTE-6: Declaration of defined type (or any other resource type) requires full namespacing, defining may not need depending on 
+  #containment
 
   define defaultsdefinedtypewithinclass {
     file{"/etc/advancedresourcetypes-${title}.txt":
       ensure => file,
     }
   }
-  
-  #gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
-  defaultsdefinedtypewithinclass{
+  # Although namespacing is not required while defining a defined type within class with the full location of the class in which it is 
+  # defined yet while delcaring the defined type, we do need to fully namespace it. Extend this concept wherever applicable
+
+  # defaultsdefinedtypewithinclass{ => Without namespacing it throws error
+
+  gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
+
     default:
       tag => 'defaulttag';
     'default1': ;
