@@ -14,6 +14,9 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # NOTE-5: Default allocation of attributes can be overriden by explicit declaration of same attributes
   # NOTE-6: Declaration of defined type (or any other resource type) requires full namespacing, defining may not need depending on 
   #containment
+  # Note 7: Resource Collectors cannot be used for iteration over searched resources. A resource such as file which is found and collected
+  #         a resource collector is not an element of an array, or a key-value pair of hash that can be iterated over. Confirm this?
+  # NOTE 8: Resource Collectors can only be used in chaining expressions and no other expression. Using an each etc causes issues 
 
   define defaultsdefinedtypewithinclass {
     file{"/etc/advancedresourcetypes-${title}.txt":
@@ -24,16 +27,43 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # defined yet while delcaring the defined type, we do need to fully namespace it. Extend this concept wherever applicable
 
   # defaultsdefinedtypewithinclass{ => Without namespacing it throws error
-
-  gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
+  # Clearly in the debug output shown below, we can see that defined type is evaluated in the end (not application but evaluation) once all other
+  # resources in the class have been evluated
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/etc/samplefilepostdefault6.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/etc/samplefilepostdefaults7.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/File[/etc/defaulttestpostdefault.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default1]/File[/etc/advancedresourcetypes-default1.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default2]/File[/etc/advancedresourcetypes-default2.txt]: Adding autorequire relationship with User[neo1]
+    gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
 
     default:
       tag => 'defaulttag';
     'default1': ;
     'default2': ;
+    'default3':
+      tag   => 'notdefault',
+      owner => 'neo4',
   }
-  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
 
+  user {'neo4':
+    ensure => present,
+  }
+
+  file {'/etc/compareorderwithdefinedtypebasedondefault_before':
+    ensure  => file,
+    content => 'file is created before default1 and default2 defined types'
+  }
+
+  file {'/etc/compareorderwithdefinedtypebasedondefault_after':
+    ensure  => file,
+    content => 'file is created after default1 and default2 defined types'
+  }
+
+  File['/etc/compareorderwithdefinedtypebasedondefault_before']
+  -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
+  -> File['/etc/compareorderwithdefinedtypebasedondefault_after']
+
+  User['neo4'] -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == notdefault |>
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
   user { 'neo1':
     ensure => present,
