@@ -21,6 +21,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   define defaultsdefinedtypewithinclass {
     file{"/etc/advancedresourcetypes-${title}.txt":
       ensure => file,
+      owner  => neo4,
     }
   }
   # Although namespacing is not required while defining a defined type within class with the full location of the class in which it is 
@@ -40,9 +41,6 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
       tag => 'defaulttag';
     'default1': ;
     'default2': ;
-    'default3':
-      tag   => 'notdefault',
-      owner => 'neo4',
   }
 
   user {'neo4':
@@ -60,11 +58,12 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   }
 
   File['/etc/compareorderwithdefinedtypebasedondefault_before']
+  -> User['neo4']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
   -> File['/etc/compareorderwithdefinedtypebasedondefault_after']
 
-  User['neo4'] -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == notdefault |>
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
+
   user { 'neo1':
     ensure => present,
   }
