@@ -57,10 +57,10 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     content => 'file is created after default1 and default2 defined types'
   }
 
-  File['/etc/compareorderwithdefinedtypebasedondefault_before']
+  File['/etc/compareorderwithdefinedtypebasedondefault_before.txt']
   -> User['neo4']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
-  -> File['/etc/compareorderwithdefinedtypebasedondefault_after']
+  -> File['/etc/compareorderwithdefinedtypebasedondefault_after.txt']
 
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
 
