@@ -32,8 +32,8 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     'default1': ;
     'default2': ;
   }
-  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>.each |$index, $dt_inst| {
-    notice($dt_inst)
+  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>.each |Hash $dt_hash| {
+    notice($dt_hash)
     notice($index)
     # defaultdefinedtypewithinclass { $dt_inst:
     #   tag => 'nomoredefaulttag',
