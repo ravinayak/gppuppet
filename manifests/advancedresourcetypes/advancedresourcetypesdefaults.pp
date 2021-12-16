@@ -16,7 +16,10 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   #containment
   # Note 7: Resource Collectors cannot be used for iteration over searched resources. A resource such as file which is found and collected
   #         a resource collector is not an element of an array, or a key-value pair of hash that can be iterated over. Confirm this?
-  # NOTE 8: Resource Collectors can only be used in chaining expressions and no other expression. Using an each etc causes issues 
+  # NOTE 8: Resource Collectors can only be used in chaining expressions and no other expression. Using an each etc causes issues
+  # NOTE 9: Parent Scope and Local Scope issues come up when we use Resource References. If we scope all defaults to specific resources, then
+  #         this question should not arise
+  # NOTE 10:
 
   define defaultsdefinedtypewithinclass {
     file{"/etc/advancedresourcetypes-${title}.txt":
@@ -57,6 +60,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     content => 'file is created after default1 and default2 defined types'
   }
 
+  # Apparently, Resource collectors can only be used in 
   File['/etc/compareorderwithdefinedtypebasedondefault_before.txt']
   -> User['neo4']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
