@@ -34,7 +34,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   }
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
 
-  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults.Defaultsdefinedtypewithinclass <| |>
+  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
   user { 'neo1':
     ensure => present,
   }
