@@ -47,12 +47,12 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     ensure => present,
   }
 
-  file {'/etc/compareorderwithdefinedtypebasedondefault_before':
+  file {'/etc/compareorderwithdefinedtypebasedondefault_before.txt':
     ensure  => file,
     content => 'file is created before default1 and default2 defined types'
   }
 
-  file {'/etc/compareorderwithdefinedtypebasedondefault_after':
+  file {'/etc/compareorderwithdefinedtypebasedondefault_after.txt':
     ensure  => file,
     content => 'file is created after default1 and default2 defined types'
   }
