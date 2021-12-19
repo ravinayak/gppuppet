@@ -20,7 +20,7 @@ class gppuppet::variablespractice{
     type1_type              => String,
     type2_integer           => Integer[1,10],
     type3_string_1_100      => String[3,80],
-    type4_resource          => File['/etc/ntp.conf'],
+    type4_resource          => File['/codetestfiles/ntp.conf'],
     type5_user              => User,
     type6_integer_1_10      => Integer[4,7],
     arr_str                 => ['los', 'angeles', 'san'],

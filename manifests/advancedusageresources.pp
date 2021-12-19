@@ -17,13 +17,13 @@ class gppuppet::advancedusageresources(
   # include gppuppet::sampleclasswithfileresourcespredefaults
 
   # file {
-  #   '/etc/file1.txt':
+  #   '/codetestfiles/file1.txt':
   #     mode      => '0644',
   #     show_diff => true;
-  #   '/etc/file2.txt':
+  #   '/codetestfiles/file2.txt':
   #     mode      => '0644',
   #     show_diff => true;
-  #   '/etc/file3.txt':
+  #   '/codetestfiles/file3.txt':
   #     show_diff => true;
   # }
   # file {
@@ -33,11 +33,11 @@ class gppuppet::advancedusageresources(
   #     group  => 'root',
   #     source => 'puppet:///modules/gppuppet/samplefile.txt',
   #     mode   => '0644';
-  #     '/etc/file1.txt':
+  #     '/codetestfiles/file1.txt':
   #       show_diff => true;
-  #     '/etc/file2.txt':
+  #     '/codetestfiles/file2.txt':
   #       show_diff => true;
-  #     '/etc/file3.txt':
+  #     '/codetestfiles/file3.txt':
   #       show_diff => true;
   # }
   $attrs = {
@@ -48,7 +48,7 @@ class gppuppet::advancedusageresources(
     source => 'puppet:///modules/gppuppet/samplefile.txt',
   }
   file{
-    '/etc/file4.txt':
+    '/codetestfiles/file4.txt':
       * => $attrs,
   }
 }

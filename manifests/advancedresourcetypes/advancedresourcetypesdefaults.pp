@@ -22,7 +22,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # NOTE 10:
 
   define defaultsdefinedtypewithinclass {
-    file{"/etc/advancedresourcetypes-${title}.txt":
+    file{"/codetestfiles/advancedresourcetypes-${title}.txt":
       ensure => file,
       owner  => neo4,
     }
@@ -33,11 +33,11 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # defaultsdefinedtypewithinclass{ => Without namespacing it throws error
   # Clearly in the debug output shown below, we can see that defined type is evaluated in the end (not application but evaluation) once all other
   # resources in the class have been evluated
-  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/etc/samplefilepostdefault6.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/etc/samplefilepostdefaults7.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/File[/etc/defaulttestpostdefault.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default1]/File[/etc/advancedresourcetypes-default1.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default2]/File[/etc/advancedresourcetypes-default2.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefault6.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefaults7.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/File[/codetestfiles/defaulttestpostdefault.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default1]/File[/codetestfiles/advancedresourcetypes-default1.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default2]/File[/codetestfiles/advancedresourcetypes-default2.txt]: Adding autorequire relationship with User[neo1]
     gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
 
     default:
@@ -50,21 +50,21 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     ensure => present,
   }
 
-  file {'/etc/compareorderwithdefinedtypebasedondefault_before.txt':
+  file {'/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt':
     ensure  => file,
     content => 'file is created before default1 and default2 defined types'
   }
 
-  file {'/etc/compareorderwithdefinedtypebasedondefault_after.txt':
+  file {'/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt':
     ensure  => file,
     content => 'file is created after default1 and default2 defined types'
   }
 
   # Apparently, Resource collectors can only be used in 
-  File['/etc/compareorderwithdefinedtypebasedondefault_before.txt']
+  File['/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt']
   -> User['neo4']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
-  -> File['/etc/compareorderwithdefinedtypebasedondefault_after.txt']
+  -> File['/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt']
 
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
 
@@ -72,7 +72,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     ensure => present,
   }
 
-  file{'/etc/defaulttestpredefault.txt':
+  file{'/codetestfiles/defaulttestpredefault.txt':
     ensure => file,
   }
   include gppuppet::sampleclasswithfileresourcespredefaults
@@ -86,11 +86,11 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
 
   include gppuppet::sampleclasswithfileresourcespostdefaults
 
-  file{'/etc/defaulttestpostdefault.txt':
+  file{'/codetestfiles/defaulttestpostdefault.txt':
     ensure => file,
   }
 
-  file {'/etc/overridedefaults.txt':
+  file {'/codetestfiles/overridedefaults.txt':
     ensure  => file,
     owner   => 'vagrant',
     mode    => '0644',

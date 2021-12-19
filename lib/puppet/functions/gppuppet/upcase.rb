@@ -1,4 +1,4 @@
-# /etc/puppetlabs/code/environments/production/modules/mymodule/lib/puppet/functions/mymodule/upcase.rb
+# /codetestfiles/puppetlabs/code/environments/production/modules/mymodule/lib/puppet/functions/mymodule/upcase.rb
 Puppet::Functions.create_function(:'gppuppet::upcase') do
   dispatch :up do
     param 'String', :some_string

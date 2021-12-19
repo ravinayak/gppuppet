@@ -39,7 +39,7 @@ class gppuppet::variables(
     ensure  => absent,
     comment => $comment,
   }
-  file{'/etc/ntp.conf':
+  file{'/codetestfiles/ntp.conf':
     ensure => absent,
   }
   notice("The variables are interpolated as: ${str} -- ${int} -- ${float} -- ${numeric} -- ${bool} -- ${arr} -- ${enum} -- ${hash} -- ${regexp}")
