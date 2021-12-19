@@ -62,9 +62,9 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     owner   => 'root',
   }
 
-  # Apparently, Resource collectors can only be used in 
-  File['/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt']
-  -> User['neo44']
+  # Apparently, Resource collectors can only be used in
+  User['neo44']
+  -> File['/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
   -> File['/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt']
 
