@@ -52,12 +52,14 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
 
   file {'/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt':
     ensure  => file,
-    content => 'file is created before default1 and default2 defined types'
+    content => 'file is created before default1 and default2 defined types',
+    owner   => 'root',
   }
 
   file {'/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt':
     ensure  => file,
-    content => 'file is created after default1 and default2 defined types'
+    content => 'file is created after default1 and default2 defined types',
+    owner   => 'root',
   }
 
   # Apparently, Resource collectors can only be used in 
@@ -66,7 +68,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
   -> File['/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt']
 
-  Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
+  #Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
 
   user { 'neo11':
     ensure => present,
