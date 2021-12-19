@@ -33,11 +33,11 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   # defaultsdefinedtypewithinclass{ => Without namespacing it throws error
   # Clearly in the debug output shown below, we can see that defined type is evaluated in the end (not application but evaluation) once all other
   # resources in the class have been evluated
-  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefault6.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefaults7.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/File[/codetestfiles/defaulttestpostdefault.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default1]/File[/codetestfiles/advancedresourcetypes-default1.txt]: Adding autorequire relationship with User[neo1]
-  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default2]/File[/codetestfiles/advancedresourcetypes-default2.txt]: Adding autorequire relationship with User[neo1]
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefault6.txt]: Adding autorequire relationship with User[neo11]
+  # Debug: /Stage[main]/Gppuppet::Sampleclasswithfileresourcespostdefaults/File[/codetestfiles/samplefilepostdefaults7.txt]: Adding autorequire relationship with User[neo11]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/File[/codetestfiles/defaulttestpostdefault.txt]: Adding autorequire relationship with User[neo11]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default1]/File[/codetestfiles/advancedresourcetypes-default1.txt]: Adding autorequire relationship with User[neo11]
+  # Debug: /Stage[main]/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults/Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass[default2]/File[/codetestfiles/advancedresourcetypes-default2.txt]: Adding autorequire relationship with User[neo11]
     gppuppet::advancedresourcetypes::advancedresourcetypesdefaults::defaultsdefinedtypewithinclass{
 
     default:
@@ -68,7 +68,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
 
   Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| |>
 
-  user { 'neo1':
+  user { 'neo11':
     ensure => present,
   }
 
@@ -78,8 +78,8 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   include gppuppet::sampleclasswithfileresourcespredefaults
 
   File{
-    owner   => 'neo1',
-    group   => 'neo1',
+    owner   => 'neo11',
+    group   => 'neo11',
     mode    => '0755',
     content => 'This is a file generated through default values allocation',
   }
