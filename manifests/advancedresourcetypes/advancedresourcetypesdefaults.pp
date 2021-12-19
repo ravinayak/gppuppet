@@ -24,7 +24,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
   define defaultsdefinedtypewithinclass {
     file{"/codetestfiles/advancedresourcetypes-${title}.txt":
       ensure => file,
-      owner  => neo4,
+      owner  => neo44,
     }
   }
   # Although namespacing is not required while defining a defined type within class with the full location of the class in which it is 
@@ -46,7 +46,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
     'default2': ;
   }
 
-  user {'neo4':
+  user {'neo44':
     ensure => present,
   }
 
@@ -62,7 +62,7 @@ class gppuppet::advancedresourcetypes::advancedresourcetypesdefaults{
 
   # Apparently, Resource collectors can only be used in 
   File['/codetestfiles/compareorderwithdefinedtypebasedondefault_before.txt']
-  -> User['neo4']
+  -> User['neo44']
   -> Gppuppet::Advancedresourcetypes::Advancedresourcetypesdefaults::Defaultsdefinedtypewithinclass <| tag == defaulttag |>
   -> File['/codetestfiles/compareorderwithdefinedtypebasedondefault_after.txt']
 
