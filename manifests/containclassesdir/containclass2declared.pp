@@ -4,4 +4,3 @@ class gppuppet::containclassesdir::containclass2declared {
     ensure => file,
   }
 }
-Class{'puppetlearning::containclassesdir::containclass2declared': }
