@@ -6,4 +6,6 @@ class gppuppet::containclassesdir::containclass2declared {
     ensure => file,
   }
 }
-Class { 'gppuppet::containsclassesdir::containsclass2declared': }
+# Class { 'gppuppet::containclassesdir::containclass2declared': }
+# The above line works because it references its own class in file and not classes outside its files. Question of auto loading of 
+# classes in module layout arises when a class references another class outside its file

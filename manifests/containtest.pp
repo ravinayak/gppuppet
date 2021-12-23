@@ -1,7 +1,7 @@
 class gppuppet::containtest{
   contain gppuppet::containclassesdir::containclass1undeclared
   # This class is being declared and then included through contain function call
-  Class{'puppetlearning::containclassesdir::containclass2declared': }
+  Class{'gppuppet::containclassesdir::containclass2declared': }
   contain gppuppet::containclassesdir::containclass2declared
   include gppuppet::containclassesdir::includeclassexample
 }
